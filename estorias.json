@@ -1,0 +1,34 @@
+{
+  "estorias": [
+    {
+      "id": 1,
+      "titulo": "Título Estória 1",
+      "pontos": 10,
+      "descricao": "Essa é a estória 1"
+    },
+    {
+      "id": 2,
+      "titulo": "Título Estória 2",
+      "pontos": 20,
+      "descricao": "Essa é a estória 2"
+    },
+    {
+      "id": 3,
+      "titulo": "Título Estória 3",
+      "pontos": 30,
+      "descricao": "Essa é a estória 3"
+    },
+    {
+      "id": 4,
+      "titulo": "Título Estória 4",
+      "pontos": 40,
+      "descricao": "Essa é a estória 4"
+    },
+    {
+      "titulo": "Titulo",
+      "pontos": "30",
+      "descricao": "Descricao",
+      "id": 5
+    }
+  ]
+}
