@@ -25,10 +25,22 @@
       "descricao": "Essa é a estória 4"
     },
     {
-      "titulo": "Titulo",
-      "pontos": "30",
-      "descricao": "Descricao",
+      "titulo": "Título",
+      "pontos": 30,
+      "descricao": "Descrição",
       "id": 5
+    },
+    {
+      "id": 6,
+      "titulo": "Título Estória 4",
+      "pontos": 40,
+      "descricao": "Essa é a estória 4"
+    },
+    {
+      "id": 7,
+      "titulo": "Título Estória 4",
+      "pontos": 40,
+      "descricao": "Essa é a estória 4"
     }
   ]
 }

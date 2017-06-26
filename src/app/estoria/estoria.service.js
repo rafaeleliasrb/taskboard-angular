@@ -9,40 +9,35 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var Observable_1 = require('rxjs/Observable');
 var http_1 = require('@angular/http');
-var Observable_1 = require("rxjs/Observable");
-require('rxjs/add/operator/catch');
-require('rxjs/add/operator/map');
-require('rxjs/add/operator/toPromise');
-var LivroService = (function () {
-    function LivroService(http) {
-        this.http = http;
-        //json-server --watch livros.json -p 3002
-        this.apiLivros = 'http://localhost:3002/livros/';
+var EstoriaSevice = (function () {
+    function EstoriaSevice(_http) {
+        this._http = _http;
     }
-    /*getLivros(): Observable<Livro[]> {
-        return this.http.get(this.apiLivros)
-            .map(this.extrairDados)
-            .catch(this.handlerError);
-    }*/
-    LivroService.prototype.getLivros = function () {
-        return this.http.get(this.apiLivros)
+    EstoriaSevice.prototype.buscarEstorias = function () {
+        var api = 'http://localhost:3001/estorias';
+        return this._http
+            .get(api)
             .toPromise()
             .then(function (response) { return response.json(); })
-            .catch(this.handlerError);
+            .catch(this._handlerError);
     };
-    LivroService.prototype.extrairDados = function (res) {
-        var body = res.json();
-        return body || {};
+    EstoriaSevice.prototype.excluirEstoria = function (estoria) {
+        var api = "http://localhost:3001/estorias/" + estoria.id;
+        return this._http.delete(api)
+            .toPromise()
+            .then(function (response) { return response.json(); })
+            .catch(this._handlerError);
     };
-    LivroService.prototype.handlerError = function (error) {
+    EstoriaSevice.prototype._handlerError = function (error) {
         return Observable_1.Observable.throw(error.json().error || 'Erro no servidor');
     };
-    LivroService = __decorate([
+    EstoriaSevice = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])
-    ], LivroService);
-    return LivroService;
+    ], EstoriaSevice);
+    return EstoriaSevice;
 }());
-exports.LivroService = LivroService;
-//# sourceMappingURL=livro.service.js.map
+exports.EstoriaSevice = EstoriaSevice;
+//# sourceMappingURL=estoria.service.js.map

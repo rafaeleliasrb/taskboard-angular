@@ -8,39 +8,31 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var estoria_service_1 = require('./../estoria/estoria.service');
 var http_1 = require('@angular/http');
 var core_1 = require('@angular/core');
 var TaskboardComponent = (function () {
-    function TaskboardComponent(_http) {
+    function TaskboardComponent(_http, _estoriaService) {
         this._http = _http;
+        this._estoriaService = _estoriaService;
         this.estorias = [];
     }
     TaskboardComponent.prototype.ngOnInit = function () {
         console.log("Iniciou ...");
-        this._getEstorias();
-        var titulo = this._getTitulo(this.estorias.length);
+        this._inicializaTaskboard();
+        //como chamar esse metodo so depois do de cima, ja q é assincrono
+        //this._getTitulo();
     };
-    /*componentWillMount() {
-        this._buscarEstorias();
-    }*/
-    TaskboardComponent.prototype._buscarEstorias = function () {
-        /*jQuery.ajax({
-            method: 'GET',
-            url: 'http://localhost:3001/estorias',
-            success: estorias => this.setState({estorias})
-        });*/
+    TaskboardComponent.prototype.onElementDeleted = function (estoria) {
         var _this = this;
-        var api = 'http://localhost:3001/estorias';
-        this._http
-            .get(api)
-            .map(function (res) { return res.json(); })
-            .toPromise()
-            .then(function (dado) {
-            console.log("dado: " + dado);
-            _this.estorias = dado;
-            console.log(_this.estorias);
-        });
-        /*.then(dado => new Estoria(dado.id, dado.titulo, dado.pontos, dado.descricao));*/
+        this._estoriaService
+            .excluirEstoria(estoria)
+            .then(function () {
+            var index = _this.estorias.findIndex(function (item) { return item.id === estoria.id; });
+            _this.estorias.splice(index, 1);
+            _this._getTitulo();
+        })
+            .catch(function (error) { return _this.erroMessage = error; });
     };
     /*_adicionarEstoria(estoria: Estoria) {
         jQuery.post('http://localhost:3001/estorias', estoria)
@@ -49,27 +41,27 @@ var TaskboardComponent = (function () {
             );
         });
     }*/
-    TaskboardComponent.prototype._getEstorias = function () {
-        this._buscarEstorias();
-        /*return this.state.estorias.map(estoria =>
-            <Estoria
-                titulo={estoria.titulo} descricao={estoria.descricao}
-                pontos={estoria.pontos} key={estoria.id}
-                id={estoria.id}
-                onDelete={this._excluirEstoria.bind(this)}/>);*/
+    TaskboardComponent.prototype._inicializaTaskboard = function () {
+        var _this = this;
+        this._estoriaService
+            .buscarEstorias()
+            .then(function (estorias) {
+            _this.estorias = estorias;
+            _this._getTitulo();
+        })
+            .catch(function (error) { return _this.erroMessage = error; });
     };
-    TaskboardComponent.prototype._getTitulo = function (totalDeEstorias) {
-        var titulo;
+    TaskboardComponent.prototype._getTitulo = function () {
+        var totalDeEstorias = this.estorias.length;
         if (totalDeEstorias === 0) {
-            titulo = "Backlog vazio";
+            this.titulo = "Backlog vazio";
         }
         else if (totalDeEstorias === 1) {
-            titulo = "1 estória";
+            this.titulo = "1 estória";
         }
         else {
-            titulo = totalDeEstorias + " est\u00F3rias";
+            this.titulo = totalDeEstorias + " est\u00F3rias";
         }
-        return titulo;
     };
     TaskboardComponent = __decorate([
         core_1.Component({
@@ -77,7 +69,7 @@ var TaskboardComponent = (function () {
             templateUrl: "taskboard.component.html",
             selector: "taskboard"
         }), 
-        __metadata('design:paramtypes', [http_1.Http])
+        __metadata('design:paramtypes', [http_1.Http, estoria_service_1.EstoriaSevice])
     ], TaskboardComponent);
     return TaskboardComponent;
 }());

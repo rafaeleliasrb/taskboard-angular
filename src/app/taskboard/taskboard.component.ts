@@ -1,3 +1,4 @@
+import { EstoriaSevice } from './../estoria/estoria.service';
 import { Http } from '@angular/http';
 import { Estoria } from './../estoria/estoria.model';
 import { Component } from '@angular/core';
@@ -9,39 +10,31 @@ import { Component } from '@angular/core';
 })
 export class TaskboardComponent {
     estorias: Estoria[];
+    erroMessage: Error;
+    titulo: string;
 
-    constructor(private _http: Http) {
+    constructor(
+        private _http: Http,
+        private _estoriaService: EstoriaSevice) {
         this.estorias = [];
     }
 
     ngOnInit() {
         console.log("Iniciou ...");
-        this._getEstorias();
-        const titulo = this._getTitulo(this.estorias.length);
+        this._inicializaTaskboard();
+        //como chamar esse metodo so depois do de cima, ja q é assincrono
+        //this._getTitulo();
     }
-
-    /*componentWillMount() {
-        this._buscarEstorias();
-    }*/
-
-    _buscarEstorias() {
-        /*jQuery.ajax({
-            method: 'GET',
-            url: 'http://localhost:3001/estorias',
-            success: estorias => this.setState({estorias})
-        });*/
-
-        let api: string = 'http://localhost:3001/estorias';
-        this._http
-            .get(api)
-            .map(res => res.json())
-            .toPromise()
-            .then(dado => {
-                console.log("dado: " + dado);
-                this.estorias = dado;
-                console.log(this.estorias);
+    
+    onElementDeleted(estoria: Estoria) {
+        this._estoriaService
+            .excluirEstoria(estoria)
+            .then(() => {
+                let index = this.estorias.findIndex(item => item.id===estoria.id);
+                this.estorias.splice(index, 1);
+                this._getTitulo();
             })
-            /*.then(dado => new Estoria(dado.id, dado.titulo, dado.pontos, dado.descricao));*/
+            .catch(error => this.erroMessage = <any>error);
     }
 
     /*_adicionarEstoria(estoria: Estoria) {
@@ -52,28 +45,27 @@ export class TaskboardComponent {
         }); 
     }*/
 
-     _getEstorias() {
-         this._buscarEstorias();
-        /*return this.state.estorias.map(estoria => 
-            <Estoria 
-                titulo={estoria.titulo} descricao={estoria.descricao}
-                pontos={estoria.pontos} key={estoria.id}
-                id={estoria.id}
-                onDelete={this._excluirEstoria.bind(this)}/>);*/
+     _inicializaTaskboard() {
+         this._estoriaService
+            .buscarEstorias()
+            .then(estorias => {
+                this.estorias = estorias;
+                this._getTitulo();
+            })
+            .catch(error => this.erroMessage = <any>error);
     }
 
-    _getTitulo(totalDeEstorias: number) {
-        let titulo: string;
+    _getTitulo() {
+        let totalDeEstorias: number = this.estorias.length;
         if(totalDeEstorias === 0) {
-            titulo = "Backlog vazio";
+            this.titulo = "Backlog vazio";
         }
         else if(totalDeEstorias === 1) {
-            titulo = "1 estória";
+            this.titulo = "1 estória";
         }
         else {
-            titulo = `${totalDeEstorias} estórias`;
+            this.titulo = `${totalDeEstorias} estórias`;
         }
-        return titulo;
     }
 
     /*componentDidMount() {
