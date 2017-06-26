@@ -9,7 +9,7 @@ export class EstoriaSevice {
     constructor(private _http: Http) {}
 
     buscarEstorias(): Promise<Estoria[]> {
-        let api: string = 'http://localhost:3001/estorias';
+        let api: string = 'http://localhost:3002/estorias';
         return this._http
             .get(api)
             .toPromise()
@@ -18,8 +18,18 @@ export class EstoriaSevice {
     }
 
     excluirEstoria(estoria: Estoria): Promise<any> {
-        let api = `http://localhost:3001/estorias/${estoria.id}`;
-        return this._http.delete(api)
+        let api = `http://localhost:3002/estorias/${estoria.id}`;
+        return this._http
+            .delete(api)
+            .toPromise()
+            .then(response => <any>response.json())
+            .catch(this._handlerError);
+    }
+
+    adicionarEstoria(estoria: Estoria) : Promise<any> {
+        let api = `http://localhost:3002/estorias/`;
+        return this._http
+            .post(api, estoria)
             .toPromise()
             .then(response => <any>response.json())
             .catch(this._handlerError);

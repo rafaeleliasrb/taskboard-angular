@@ -1,4 +1,3 @@
-import { EstoriaSevice } from './estoria/estoria.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from "@angular/http";
@@ -7,6 +6,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { EstoriaComponent } from './estoria/estoria.component';
+import { EstoriaForm } from "./cadastrar-estoria/estoria.form";
+import { EstoriaSevice } from './estoria/estoria.service';
 import { routing } from './app.routes';
 import { TaskboardComponent } from './taskboard/taskboard.component';
 
@@ -17,8 +18,10 @@ import 'rxjs/add/operator/toPromise';
     bootstrap: [ AppComponent ],
     declarations: [ 
         AppComponent, 
-        TaskboardComponent,
-        EstoriaComponent ],
+        EstoriaComponent,
+        EstoriaForm, 
+        TaskboardComponent
+    ],
     imports: [BrowserModule, FormsModule, HttpModule, routing],
     providers: [ EstoriaSevice ]
 })

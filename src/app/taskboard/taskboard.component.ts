@@ -20,7 +20,6 @@ export class TaskboardComponent {
     }
 
     ngOnInit() {
-        console.log("Iniciou ...");
         this._inicializaTaskboard();
         //como chamar esse metodo so depois do de cima, ja q é assincrono
         //this._getTitulo();
@@ -32,6 +31,15 @@ export class TaskboardComponent {
             .then(() => {
                 let index = this.estorias.findIndex(item => item.id===estoria.id);
                 this.estorias.splice(index, 1);
+                this._getTitulo();
+            })
+            .catch(error => this.erroMessage = <any>error);
+    }
+
+    onElementAdd(estoria: Estoria) {
+        this._estoriaService.adicionarEstoria(estoria)
+            .then(() => {
+                this.estorias.push(estoria);
                 this._getTitulo();
             })
             .catch(error => this.erroMessage = <any>error);

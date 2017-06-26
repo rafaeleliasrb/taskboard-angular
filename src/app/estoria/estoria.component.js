@@ -8,13 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var estoria_service_1 = require('./estoria.service');
 var estoria_model_1 = require('./estoria.model');
 var core_1 = require('@angular/core');
 var core_2 = require('@angular/core');
 var EstoriaComponent = (function () {
-    function EstoriaComponent(_estoriaService) {
-        this._estoriaService = _estoriaService;
+    function EstoriaComponent() {
         this.elementDeleted = new core_2.EventEmitter();
         this.OCULTAR_DESCRICAO = "Ocultar descrição";
         this.EXIBIR_DESCRICAO = "Exibir descrição";
@@ -50,7 +48,7 @@ var EstoriaComponent = (function () {
             templateUrl: "./estoria.component.html",
             selector: "estoria"
         }), 
-        __metadata('design:paramtypes', [estoria_service_1.EstoriaSevice])
+        __metadata('design:paramtypes', [])
     ], EstoriaComponent);
     return EstoriaComponent;
 }());

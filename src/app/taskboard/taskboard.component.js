@@ -18,7 +18,6 @@ var TaskboardComponent = (function () {
         this.estorias = [];
     }
     TaskboardComponent.prototype.ngOnInit = function () {
-        console.log("Iniciou ...");
         this._inicializaTaskboard();
         //como chamar esse metodo so depois do de cima, ja q é assincrono
         //this._getTitulo();
@@ -30,6 +29,15 @@ var TaskboardComponent = (function () {
             .then(function () {
             var index = _this.estorias.findIndex(function (item) { return item.id === estoria.id; });
             _this.estorias.splice(index, 1);
+            _this._getTitulo();
+        })
+            .catch(function (error) { return _this.erroMessage = error; });
+    };
+    TaskboardComponent.prototype.onElementAdd = function (estoria) {
+        var _this = this;
+        this._estoriaService.adicionarEstoria(estoria)
+            .then(function () {
+            _this.estorias.push(estoria);
             _this._getTitulo();
         })
             .catch(function (error) { return _this.erroMessage = error; });

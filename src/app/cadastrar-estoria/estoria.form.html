@@ -1,0 +1,14 @@
+<div class="row">
+    <form class="col s12" (submit)="adicionarEstoria()">
+        <h5>+1 Estória</h5>
+        <div class="input-field col s12">
+            <input placeholder="Titulo" type="text" [(ngModel)]="estoria.titulo" name="titulo"/>
+            <br/>
+            <input placeholder="Pontos" type="text" [(ngModel)]="estoria.pontos" name="pontos"/>
+            <br/>
+            <textarea placeholder="Descrição" class="materialize-textarea" 
+                [(ngModel)]="estoria.descricao" name="descricao"></textarea>
+            <button class="btn waves-effect waves-light" type="submit">Enviar</button>
+        </div>
+    </form>
+</div>

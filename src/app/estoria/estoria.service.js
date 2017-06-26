@@ -16,7 +16,7 @@ var EstoriaSevice = (function () {
         this._http = _http;
     }
     EstoriaSevice.prototype.buscarEstorias = function () {
-        var api = 'http://localhost:3001/estorias';
+        var api = 'http://localhost:3002/estorias';
         return this._http
             .get(api)
             .toPromise()
@@ -24,8 +24,17 @@ var EstoriaSevice = (function () {
             .catch(this._handlerError);
     };
     EstoriaSevice.prototype.excluirEstoria = function (estoria) {
-        var api = "http://localhost:3001/estorias/" + estoria.id;
-        return this._http.delete(api)
+        var api = "http://localhost:3002/estorias/" + estoria.id;
+        return this._http
+            .delete(api)
+            .toPromise()
+            .then(function (response) { return response.json(); })
+            .catch(this._handlerError);
+    };
+    EstoriaSevice.prototype.adicionarEstoria = function (estoria) {
+        var api = "http://localhost:3002/estorias/";
+        return this._http
+            .post(api, estoria)
             .toPromise()
             .then(function (response) { return response.json(); })
             .catch(this._handlerError);

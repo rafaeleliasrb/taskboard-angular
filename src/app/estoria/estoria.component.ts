@@ -1,4 +1,3 @@
-import { EstoriaSevice } from './estoria.service';
 import { Http } from '@angular/http';
 import { Estoria } from './estoria.model';
 import { Input } from '@angular/core';
@@ -19,7 +18,7 @@ export class EstoriaComponent {
     isExibeEstoria: boolean;
     textoBotao: string;
 
-    constructor(private _estoriaService: EstoriaSevice) {
+    constructor() {
         this.isExibeEstoria = false;
         this.textoBotao = this.EXIBIR_DESCRICAO;
     }

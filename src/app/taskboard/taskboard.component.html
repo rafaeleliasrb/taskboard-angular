@@ -1,8 +1,8 @@
 <div class="section no-pad-bot" id="index-banner">
     <div class="container">
-        <!--
-            <EstoriaForm adicionarEstoria={this._adicionarEstoria.bind(this)}/>
-        -->
+        
+        <estoriaForm (adicionaEstoria)="onElementAdd($event)"></estoriaForm>
+        
         <h1 class="header center orange-text">Estórias</h1>
         <h3>{{titulo}}</h3>
         <estoria *ngFor="let estoria of estorias" [estoria]="estoria"
