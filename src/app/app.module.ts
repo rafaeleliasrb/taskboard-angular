@@ -10,6 +10,7 @@ import { EstoriaForm } from "./cadastrar-estoria/estoria.form";
 import { EstoriaSevice } from './estoria/estoria.service';
 import { routing } from './app.routes';
 import { TaskboardComponent } from './taskboard/taskboard.component';
+import { TarefaComponent } from './tarefa/tarefa.component';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
@@ -20,7 +21,8 @@ import 'rxjs/add/operator/toPromise';
         AppComponent, 
         EstoriaComponent,
         EstoriaForm, 
-        TaskboardComponent
+        TaskboardComponent,
+        TarefaComponent
     ],
     imports: [BrowserModule, FormsModule, HttpModule, routing],
     providers: [ EstoriaSevice ]
