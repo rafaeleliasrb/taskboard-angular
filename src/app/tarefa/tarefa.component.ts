@@ -1,5 +1,3 @@
-import { Http } from '@angular/http';
-import { Http } from '@angular/http';
 import { Component, Input } from '@angular/core';
 import {Tarefa} from './tarefa';
 

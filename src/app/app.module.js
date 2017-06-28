@@ -19,6 +19,7 @@ var estoria_service_1 = require('./estoria/estoria.service');
 var app_routes_1 = require('./app.routes');
 var taskboard_component_1 = require('./taskboard/taskboard.component');
 var tarefa_component_1 = require('./tarefa/tarefa.component');
+var tarefa_cadastro_component_1 = require('./tarefa/tarefa-cadastro.component');
 require('rxjs/add/operator/map');
 require('rxjs/add/operator/toPromise');
 var AppModule = (function () {
@@ -32,7 +33,8 @@ var AppModule = (function () {
                 estoria_component_1.EstoriaComponent,
                 estoria_form_1.EstoriaForm,
                 taskboard_component_1.TaskboardComponent,
-                tarefa_component_1.TarefaComponent
+                tarefa_component_1.TarefaComponent,
+                tarefa_cadastro_component_1.TarefaCadastroComponent
             ],
             imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, http_1.HttpModule, app_routes_1.routing],
             providers: [estoria_service_1.EstoriaSevice]

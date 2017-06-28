@@ -35,6 +35,15 @@ export class EstoriaSevice {
             .catch(this._handlerError);
     }
 
+    atualizarEstoria(estoria: Estoria) {
+        let api = `http://localhost:3002/estorias/${estoria.id}`
+        return this._http
+            .put(api, estoria)
+            .toPromise()
+            .then(response => <any> response.json())
+            .catch(this._handlerError);
+    }
+
     private _handlerError(error: Response | any) {
         return Observable.throw(error.json().error || 'Erro no servidor');
     }

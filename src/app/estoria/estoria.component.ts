@@ -13,8 +13,8 @@ export class EstoriaComponent {
     @Output()
     elementDeleted: EventEmitter<any> = new EventEmitter();
 
-    private OCULTAR_DESCRICAO: string = "Ocultar descrição";
-    private EXIBIR_DESCRICAO: string = "Exibir descrição";
+    private OCULTAR_DESCRICAO: string = "Ocultar Tarefas";
+    private EXIBIR_DESCRICAO: string = "Tarefas";
     isExibeEstoria: boolean;
     textoBotao: string;
 

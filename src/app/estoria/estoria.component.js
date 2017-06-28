@@ -14,8 +14,8 @@ var core_2 = require('@angular/core');
 var EstoriaComponent = (function () {
     function EstoriaComponent() {
         this.elementDeleted = new core_2.EventEmitter();
-        this.OCULTAR_DESCRICAO = "Ocultar descrição";
-        this.EXIBIR_DESCRICAO = "Exibir descrição";
+        this.OCULTAR_DESCRICAO = "Ocultar Tarefas";
+        this.EXIBIR_DESCRICAO = "Tarefas";
         this.isExibeEstoria = false;
         this.textoBotao = this.EXIBIR_DESCRICAO;
     }

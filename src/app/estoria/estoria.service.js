@@ -39,6 +39,14 @@ var EstoriaSevice = (function () {
             .then(function (response) { return response.json(); })
             .catch(this._handlerError);
     };
+    EstoriaSevice.prototype.atualizarEstoria = function (estoria) {
+        var api = "http://localhost:3002/estorias/" + estoria.id;
+        return this._http
+            .put(api, estoria)
+            .toPromise()
+            .then(function (response) { return response.json(); })
+            .catch(this._handlerError);
+    };
     EstoriaSevice.prototype._handlerError = function (error) {
         return Observable_1.Observable.throw(error.json().error || 'Erro no servidor');
     };
