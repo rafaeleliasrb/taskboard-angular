@@ -8,30 +8,24 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var estoria_model_1 = require("../estoria/estoria.model");
-var EstoriaForm = (function () {
-    function EstoriaForm() {
-        this.adicionaEstoria = new core_1.EventEmitter();
-        this.estoria = new estoria_model_1.Estoria();
+var tarefa_model_1 = require('./tarefa.model');
+var core_1 = require('@angular/core');
+var TarefaComponent = (function () {
+    function TarefaComponent() {
     }
-    EstoriaForm.prototype.adicionarEstoria = function () {
-        this.adicionaEstoria.emit(this.estoria);
-        this.estoria = new estoria_model_1.Estoria();
-    };
     __decorate([
-        core_1.Output(), 
-        __metadata('design:type', core_1.EventEmitter)
-    ], EstoriaForm.prototype, "adicionaEstoria", void 0);
-    EstoriaForm = __decorate([
+        core_1.Input(), 
+        __metadata('design:type', tarefa_model_1.Tarefa)
+    ], TarefaComponent.prototype, "tarefa", void 0);
+    TarefaComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            templateUrl: "./estoria.form.html",
-            selector: "estoriaForm"
+            templateUrl: "./tarefa.component.html",
+            selector: "tarefa"
         }), 
         __metadata('design:paramtypes', [])
-    ], EstoriaForm);
-    return EstoriaForm;
+    ], TarefaComponent);
+    return TarefaComponent;
 }());
-exports.EstoriaForm = EstoriaForm;
-//# sourceMappingURL=estoria.form.js.map
+exports.TarefaComponent = TarefaComponent;
+//# sourceMappingURL=tarefa.component.js.map

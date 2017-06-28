@@ -1,13 +1,11 @@
 <div class="section no-pad-bot" id="index-banner">
     <div class="container">
-        
-        <estoriaForm (adicionaEstoria)="onElementAdd($event)"></estoriaForm>
-        
         <h1 class="header center orange-text">Estórias</h1>
         <h3>{{titulo}}</h3>
         <estoria *ngFor="let estoria of estorias" [estoria]="estoria"
-            (elementDeleted)="onElementDeleted(estoria)">
+            (finalizaEstoria)="onFinalizaEstoria(estoria)">
         </estoria>
+        <estoriaForm (adicionaEstoria)="onElementAdd($event)"></estoriaForm>
     </div>
 
 </div>

@@ -8,31 +8,31 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var estoria_service_1 = require('./estoria.service');
 var estoria_model_1 = require('./estoria.model');
 var core_1 = require('@angular/core');
 var core_2 = require('@angular/core');
 var EstoriaComponent = (function () {
-    function EstoriaComponent() {
-        this.elementDeleted = new core_2.EventEmitter();
-        this.OCULTAR_DESCRICAO = "Ocultar descrição";
-        this.EXIBIR_DESCRICAO = "Exibir descrição";
-        this.isExibeEstoria = false;
-        this.textoBotao = this.EXIBIR_DESCRICAO;
+    function EstoriaComponent(_estoriaService) {
+        this._estoriaService = _estoriaService;
+        this.finalizaEstoria = new core_2.EventEmitter();
+        this.isExibeTarefas = false;
     }
-    EstoriaComponent.prototype.toggleDescricao = function () {
-        this.isExibeEstoria = !this.isExibeEstoria;
-        this._alteraTextoBotao();
+    EstoriaComponent.prototype.toggleTarefas = function () {
+        this.isExibeTarefas = !this.isExibeTarefas;
     };
-    EstoriaComponent.prototype._alteraTextoBotao = function () {
-        if (this.isExibeEstoria) {
-            this.textoBotao = this.OCULTAR_DESCRICAO;
-        }
-        else {
-            this.textoBotao = this.EXIBIR_DESCRICAO;
-        }
+    EstoriaComponent.prototype.finalizarEstoria = function () {
+        this.finalizaEstoria.emit();
     };
-    EstoriaComponent.prototype.deleteElement = function () {
-        this.elementDeleted.emit();
+    EstoriaComponent.prototype.onAdicionaTarefa = function (tarefa) {
+        var _this = this;
+        this._estoriaService
+            .adicionaTarefaNaEstoria(this.estoria, tarefa)
+            .then(function (estoria) {
+            _this.estoria = estoria;
+        })
+            .catch(function (error) { return _this.erroMessage = error; });
+        ;
     };
     __decorate([
         core_1.Input(), 
@@ -41,14 +41,14 @@ var EstoriaComponent = (function () {
     __decorate([
         core_2.Output(), 
         __metadata('design:type', core_2.EventEmitter)
-    ], EstoriaComponent.prototype, "elementDeleted", void 0);
+    ], EstoriaComponent.prototype, "finalizaEstoria", void 0);
     EstoriaComponent = __decorate([
         core_2.Component({
             moduleId: module.id,
             templateUrl: "./estoria.component.html",
             selector: "estoria"
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [estoria_service_1.EstoriaSevice])
     ], EstoriaComponent);
     return EstoriaComponent;
 }());

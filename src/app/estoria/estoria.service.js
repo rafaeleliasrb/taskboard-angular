@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var Observable_1 = require('rxjs/Observable');
+var estoria_model_1 = require('./estoria.model');
 var http_1 = require('@angular/http');
 var EstoriaSevice = (function () {
     function EstoriaSevice(_http) {
@@ -23,10 +24,14 @@ var EstoriaSevice = (function () {
             .then(function (response) { return response.json(); })
             .catch(this._handlerError);
     };
-    EstoriaSevice.prototype.excluirEstoria = function (estoria) {
+    EstoriaSevice.prototype.finalizaEstoria = function (estoria) {
+        estoria = new estoria_model_1.Estoria(estoria);
+        estoria.finalizaEstoria();
+        var headers = new http_1.Headers();
+        headers.append('Content-Type', 'application/json');
         var api = "http://localhost:3002/estorias/" + estoria.id;
         return this._http
-            .delete(api)
+            .put(api, JSON.stringify(estoria), { headers: headers })
             .toPromise()
             .then(function (response) { return response.json(); })
             .catch(this._handlerError);
@@ -35,6 +40,18 @@ var EstoriaSevice = (function () {
         var api = "http://localhost:3002/estorias/";
         return this._http
             .post(api, estoria)
+            .toPromise()
+            .then(function (response) { return response.json(); })
+            .catch(this._handlerError);
+    };
+    EstoriaSevice.prototype.adicionaTarefaNaEstoria = function (estoria, tarefa) {
+        estoria = new estoria_model_1.Estoria(estoria);
+        estoria.adicionaTarefa(tarefa);
+        var headers = new http_1.Headers();
+        headers.append('Content-Type', 'application/json');
+        var api = "http://localhost:3002/estorias/" + estoria.id;
+        return this._http
+            .put(api, JSON.stringify(estoria), { headers: headers })
             .toPromise()
             .then(function (response) { return response.json(); })
             .catch(this._handlerError);

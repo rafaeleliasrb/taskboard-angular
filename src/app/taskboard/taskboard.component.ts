@@ -25,9 +25,9 @@ export class TaskboardComponent {
         //this._getTitulo();
     }
     
-    onElementDeleted(estoria: Estoria) {
+    onFinalizaEstoria(estoria: Estoria) {
         this._estoriaService
-            .excluirEstoria(estoria)
+            .finalizaEstoria(estoria)
             .then(() => {
                 let index = this.estorias.findIndex(item => item.id===estoria.id);
                 this.estorias.splice(index, 1);
@@ -38,26 +38,18 @@ export class TaskboardComponent {
 
     onElementAdd(estoria: Estoria) {
         this._estoriaService.adicionarEstoria(estoria)
-            .then(() => {
-                this.estorias.push(estoria);
+            .then((estoriaAdicionada) => {
+                this.estorias.push(estoriaAdicionada);
                 this._getTitulo();
             })
             .catch(error => this.erroMessage = <any>error);
     }
 
-    /*_adicionarEstoria(estoria: Estoria) {
-        jQuery.post('http://localhost:3001/estorias', estoria)
-            .done(novaEstoria => {
-                this.setState({estorias: this.state.estorias.concat([novaEstoria])}
-            );
-        }); 
-    }*/
-
      _inicializaTaskboard() {
          this._estoriaService
             .buscarEstorias()
             .then(estorias => {
-                this.estorias = estorias;
+                this.estorias = estorias.filter(estoria => !estoria.finalizada);
                 this._getTitulo();
             })
             .catch(error => this.erroMessage = <any>error);
@@ -83,14 +75,5 @@ export class TaskboardComponent {
     /*componentWillUnmount() {
         console.log("Limpando o interval...");
         clearInterval(this._timer);
-    }*/
-
-    /*_excluirEstoria(idEstoria: number) {
-        jQuery.ajax({
-            method: 'DELETE',
-            url: `http://localhost:3001/estorias/${idEstoria}`
-        });
-        
-        this.setState({estorias: this.state.estorias.filter(item => item.id !== idEstoria)});
     }*/
 }

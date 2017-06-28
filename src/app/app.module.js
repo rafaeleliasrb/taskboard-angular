@@ -8,6 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var tarefa_form_component_1 = require('./cadastrar-tarefa/tarefa.form.component');
+var tarefa_component_1 = require('./tarefa/tarefa.component');
 var platform_browser_1 = require('@angular/platform-browser');
 var forms_1 = require('@angular/forms');
 var http_1 = require("@angular/http");
@@ -30,7 +32,9 @@ var AppModule = (function () {
                 app_component_1.AppComponent,
                 estoria_component_1.EstoriaComponent,
                 estoria_form_1.EstoriaForm,
-                taskboard_component_1.TaskboardComponent
+                taskboard_component_1.TaskboardComponent,
+                tarefa_component_1.TarefaComponent,
+                tarefa_form_component_1.TarefaFormComponent
             ],
             imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, http_1.HttpModule, app_routes_1.routing],
             providers: [estoria_service_1.EstoriaSevice]

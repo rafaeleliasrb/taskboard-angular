@@ -22,10 +22,10 @@ var TaskboardComponent = (function () {
         //como chamar esse metodo so depois do de cima, ja q é assincrono
         //this._getTitulo();
     };
-    TaskboardComponent.prototype.onElementDeleted = function (estoria) {
+    TaskboardComponent.prototype.onFinalizaEstoria = function (estoria) {
         var _this = this;
         this._estoriaService
-            .excluirEstoria(estoria)
+            .finalizaEstoria(estoria)
             .then(function () {
             var index = _this.estorias.findIndex(function (item) { return item.id === estoria.id; });
             _this.estorias.splice(index, 1);
@@ -36,25 +36,18 @@ var TaskboardComponent = (function () {
     TaskboardComponent.prototype.onElementAdd = function (estoria) {
         var _this = this;
         this._estoriaService.adicionarEstoria(estoria)
-            .then(function () {
-            _this.estorias.push(estoria);
+            .then(function (estoriaAdicionada) {
+            _this.estorias.push(estoriaAdicionada);
             _this._getTitulo();
         })
             .catch(function (error) { return _this.erroMessage = error; });
     };
-    /*_adicionarEstoria(estoria: Estoria) {
-        jQuery.post('http://localhost:3001/estorias', estoria)
-            .done(novaEstoria => {
-                this.setState({estorias: this.state.estorias.concat([novaEstoria])}
-            );
-        });
-    }*/
     TaskboardComponent.prototype._inicializaTaskboard = function () {
         var _this = this;
         this._estoriaService
             .buscarEstorias()
             .then(function (estorias) {
-            _this.estorias = estorias;
+            _this.estorias = estorias.filter(function (estoria) { return !estoria.finalizada; });
             _this._getTitulo();
         })
             .catch(function (error) { return _this.erroMessage = error; });

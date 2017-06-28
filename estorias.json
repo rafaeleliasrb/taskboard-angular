@@ -4,61 +4,108 @@
       "id": 1,
       "titulo": "Título Estória 1",
       "pontos": 10,
-      "descricao": "Essa é a estória 1"
+      "descricao": "Essa é a estória 1",
+      "finalizada": false,
+      "tarefas": [
+        {
+          "titulo": "Tarefa 1",
+          "descricao": "Essa tarefa faz isso"
+        },
+        {
+          "titulo": "Tarefa 2",
+          "descricao": "Essa tarefa faz aquilo"
+        }
+      ]
     },
     {
       "id": 2,
       "titulo": "Título Estória 2",
       "pontos": 20,
-      "descricao": "Essa é a estória 2"
+      "descricao": "Essa é a estória 2",
+      "finalizada": false,
+      "tarefas": [
+        {
+          "titulo": "Tarefa 1",
+          "descricao": "Essa tarefa faz isso"
+        },
+        {
+          "titulo": "Tarefa 2",
+          "descricao": "Essa tarefa faz aquilo"
+        },
+        {
+          "titulo": "Tarefa 3",
+          "descricao": "Essa tarefa faz aquilo outro"
+        }
+      ]
     },
     {
+      "tarefas": [
+        {
+          "titulo": "Tarefa 1",
+          "descricao": "Essa tarefa faz isso"
+        }
+      ],
       "id": 3,
       "titulo": "Título Estória 3",
       "pontos": 30,
-      "descricao": "Essa é a estória 3"
+      "descricao": "Essa é a estória 3",
+      "finalizada": false
     },
     {
       "id": 4,
       "titulo": "Título Estória 4",
       "pontos": 40,
-      "descricao": "Essa é a estória 4"
+      "descricao": "Essa é a estória 4",
+      "finalizada": true,
+      "tarefas": [
+        {
+          "titulo": "Tarefa 1",
+          "descricao": "Essa tarefa faz isso"
+        },
+        {
+          "titulo": "Tarefa 2",
+          "descricao": "Essa tarefa faz aquilo"
+        }
+      ]
     },
     {
-      "titulo": "Título",
-      "pontos": 30,
-      "descricao": "Descrição",
-      "id": 5
-    },
-    {
-      "id": 6,
-      "titulo": "Título Estória 4",
-      "pontos": 40,
-      "descricao": "Essa é a estória 4"
-    },
-    {
-      "titulo": "tetetset",
-      "descricao": "setsetsetsetset",
-      "pontos": "11",
-      "id": 7
-    },
-    {
-      "titulo": "testsetsetsetsets",
-      "descricao": "tsetsetsetstateataetasetaseta",
-      "pontos": "30",
-      "id": 8
-    },
-    {
-      "titulo": "testset5465465",
-      "pontos": "45",
-      "descricao": "fsdfsdfasa564f45as6f4das6dfasfasf",
-      "id": 9
-    },
-    {
-      "titulo": "gfsgsfgsdgs",
+      "tarefas": [
+        {
+          "titulo": "testsetse",
+          "descricao": "teststsetse"
+        }
+      ],
+      "id": 5,
+      "titulo": "Tarefa 5",
       "pontos": "50",
-      "descricao": "ghfhgdhdfhdf",
-      "id": 10
+      "descricao": "dsahduasdhaohdoausd"
+    },
+    {
+      "tarefas": [],
+      "titulo": "Tarefa 6",
+      "pontos": "60",
+      "descricao": "asaddadadasda",
+      "id": 6
+    },
+    {
+      "tarefas": [],
+      "id": 7,
+      "titulo": "Tarefa 7",
+      "pontos": "70",
+      "descricao": "ffafafafafafaf",
+      "finalizada": true
+    },
+    {
+      "tarefas": [
+        {
+          "titulo": "fsdffsfdas",
+          "descricao": "asdasdasdada"
+        }
+      ],
+      "id": 8,
+      "titulo": "Tarefa 8",
+      "pontos": "80",
+      "descricao": "fdsgdfgsdgsdfgdsfg"
     }
   ]
 }

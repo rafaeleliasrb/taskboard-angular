@@ -17,6 +17,6 @@ export class EstoriaForm {
 
     adicionarEstoria() {
         this.adicionaEstoria.emit(this.estoria);
-        console.log("Form adicionar... " + JSON.stringify(this.estoria));
+        this.estoria = new Estoria();
     }
 }

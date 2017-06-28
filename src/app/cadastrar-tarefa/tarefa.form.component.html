@@ -1,0 +1,11 @@
+<!--<div class="row">-->
+    <form class="col s12 m6" (submit)="adicionarTarefa()">
+        <div class="input-field col s12">
+            <input placeholder="Nova Tarefa" type="text" [(ngModel)]="tarefa.titulo" name="titulo"/>
+            <br/>
+            <textarea placeholder="Descrição" class="materialize-textarea" 
+                [(ngModel)]="tarefa.descricao" name="descricao"></textarea>
+            <button class="btn waves-effect waves-light" type="submit">Adicionar Tarefa</button>
+        </div>
+    </form>
+<!--</div>-->

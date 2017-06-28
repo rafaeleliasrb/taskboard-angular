@@ -1,3 +1,5 @@
+import { Tarefa } from './../tarefa/tarefa.model';
+import { EstoriaSevice } from './estoria.service';
 import { Http } from '@angular/http';
 import { Estoria } from './estoria.model';
 import { Input } from '@angular/core';
@@ -11,33 +13,29 @@ export class EstoriaComponent {
     @Input() estoria: Estoria;
 
     @Output()
-    elementDeleted: EventEmitter<any> = new EventEmitter();
+    finalizaEstoria: EventEmitter<any> = new EventEmitter();
 
-    private OCULTAR_DESCRICAO: string = "Ocultar descrição";
-    private EXIBIR_DESCRICAO: string = "Exibir descrição";
-    isExibeEstoria: boolean;
-    textoBotao: string;
+    isExibeTarefas: boolean;
+    erroMessage: Error;
 
-    constructor() {
-        this.isExibeEstoria = false;
-        this.textoBotao = this.EXIBIR_DESCRICAO;
+    constructor(private _estoriaService: EstoriaSevice) {
+        this.isExibeTarefas = false;
     }
 
-    toggleDescricao() {
-        this.isExibeEstoria = !this.isExibeEstoria;
-        this._alteraTextoBotao();
+    toggleTarefas() {
+        this.isExibeTarefas = !this.isExibeTarefas;
     }
 
-    _alteraTextoBotao() {
-        if(this.isExibeEstoria) {
-            this.textoBotao = this.OCULTAR_DESCRICAO;
-        }
-        else {
-            this.textoBotao = this.EXIBIR_DESCRICAO;
-        }
+    finalizarEstoria() {
+        this.finalizaEstoria.emit();
     }
 
-    deleteElement() {
-        this.elementDeleted.emit();
+    onAdicionaTarefa(tarefa: Tarefa) {
+        this._estoriaService
+            .adicionaTarefaNaEstoria(this.estoria, tarefa)
+            .then((estoria) => {
+                this.estoria = estoria;
+            })
+            .catch(error => this.erroMessage = <any>error);;
     }
 }

@@ -1,3 +1,5 @@
+import { TarefaFormComponent } from './cadastrar-tarefa/tarefa.form.component';
+import { TarefaComponent } from './tarefa/tarefa.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from "@angular/http";
@@ -20,7 +22,9 @@ import 'rxjs/add/operator/toPromise';
         AppComponent, 
         EstoriaComponent,
         EstoriaForm, 
-        TaskboardComponent
+        TaskboardComponent,
+        TarefaComponent,
+        TarefaFormComponent
     ],
     imports: [BrowserModule, FormsModule, HttpModule, routing],
     providers: [ EstoriaSevice ]
