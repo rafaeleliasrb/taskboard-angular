@@ -6,11 +6,10 @@ import { Http, Response, Headers } from '@angular/http';
 
 @Injectable()
 export class EstoriaSevice {
-    
     constructor(private _http: Http) {}
 
     buscarEstorias(): Promise<Estoria[]> {
-        let api: string = 'http://localhost:3002/estorias';
+        let api = 'http://localhost:3002/estorias';
         return this._http
             .get(api)
             .toPromise()
@@ -33,7 +32,7 @@ export class EstoriaSevice {
             .catch(this._handlerError);
     }
 
-    adicionarEstoria(estoria: Estoria) : Promise<Estoria> {
+    adicionarEstoria(estoria: Estoria): Promise<Estoria> {
         let api = `http://localhost:3002/estorias/`;
         return this._http
             .post(api, estoria)

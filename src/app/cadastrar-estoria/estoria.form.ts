@@ -1,18 +1,16 @@
 
-import { Component, Input, Output, EventEmitter } from "@angular/core";
-import { Estoria } from "../estoria/estoria.model";
+import { Component, Output, EventEmitter } from '@angular/core';
+import { Estoria } from '../estoria/estoria.model';
 
 @Component({
     moduleId: module.id,
-    templateUrl: "./estoria.form.html",
-    selector: "estoriaForm"
+    templateUrl: './estoria.form.html',
+    selector: 'estoriaForm'
 })
 export class EstoriaForm {
-    @Output() 
+    @Output()
     adicionaEstoria: EventEmitter<Estoria> = new EventEmitter<Estoria>();
-    
     estoria: Estoria = new Estoria();
-    
     constructor() {}
 
     adicionarEstoria() {

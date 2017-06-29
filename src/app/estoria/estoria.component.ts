@@ -1,13 +1,12 @@
 import { Tarefa } from './../tarefa/tarefa.model';
 import { EstoriaSevice } from './estoria.service';
-import { Http } from '@angular/http';
 import { Estoria } from './estoria.model';
 import { Input } from '@angular/core';
 import { Component, Output, EventEmitter } from '@angular/core';
 @Component({
     moduleId: module.id,
-    templateUrl: "./estoria.component.html",
-    selector: "estoria"
+    templateUrl: './estoria.component.html',
+    selector: 'estoria'
 })
 export class EstoriaComponent {
     @Input() estoria: Estoria;
@@ -36,6 +35,6 @@ export class EstoriaComponent {
             .then((estoria) => {
                 this.estoria = estoria;
             })
-            .catch(error => this.erroMessage = <any>error);;
+            .catch(error => this.erroMessage = <any>error);
     }
 }

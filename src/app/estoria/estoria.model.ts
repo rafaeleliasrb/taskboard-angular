@@ -9,7 +9,7 @@ export class Estoria {
     tarefas: Tarefa[] = [];
 
     constructor(estoria: any = null) {
-        if(estoria) {
+        if (estoria) {
             this.id = estoria.id;
             this.titulo = estoria.titulo;
             this.pontos = estoria.pontos;

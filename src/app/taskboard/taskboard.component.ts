@@ -5,8 +5,8 @@ import { Component } from '@angular/core';
 
 @Component({
     moduleId: module.id,
-    templateUrl: "taskboard.component.html",
-    selector: "taskboard"
+    templateUrl: 'taskboard.component.html',
+    selector: 'taskboard'
 })
 export class TaskboardComponent {
     estorias: Estoria[];
@@ -21,15 +21,16 @@ export class TaskboardComponent {
 
     ngOnInit() {
         this._inicializaTaskboard();
-        //como chamar esse metodo so depois do de cima, ja q é assincrono
-        //this._getTitulo();
+        /*
+        TODO: como chamar esse metodo so depois do de cima, ja q é assincrono
+        this._getTitulo();
+        */
     }
-    
     onFinalizaEstoria(estoria: Estoria) {
         this._estoriaService
             .finalizaEstoria(estoria)
             .then(() => {
-                let index = this.estorias.findIndex(item => item.id===estoria.id);
+                let index = this.estorias.findIndex(item => item.id === estoria.id);
                 this.estorias.splice(index, 1);
                 this._getTitulo();
             })
@@ -57,23 +58,12 @@ export class TaskboardComponent {
 
     _getTitulo() {
         let totalDeEstorias: number = this.estorias.length;
-        if(totalDeEstorias === 0) {
-            this.titulo = "Backlog vazio";
-        }
-        else if(totalDeEstorias === 1) {
-            this.titulo = "1 estória";
-        }
-        else {
+        if (totalDeEstorias === 0) {
+            this.titulo = 'Backlog vazio';
+        } else if (totalDeEstorias === 1) {
+            this.titulo = '1 estória';
+        } else {
             this.titulo = `${totalDeEstorias} estórias`;
         }
     }
-
-    /*componentDidMount() {
-        this._timer = setInterval(() => this._buscarEstorias(), 5000);
-    }*/
-
-    /*componentWillUnmount() {
-        console.log("Limpando o interval...");
-        clearInterval(this._timer);
-    }*/
 }
