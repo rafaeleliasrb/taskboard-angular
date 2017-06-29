@@ -32,7 +32,6 @@ var EstoriaComponent = (function () {
             _this.estoria = estoria;
         })
             .catch(function (error) { return _this.erroMessage = error; });
-        ;
     };
     __decorate([
         core_1.Input(), 
@@ -45,8 +44,8 @@ var EstoriaComponent = (function () {
     EstoriaComponent = __decorate([
         core_2.Component({
             moduleId: module.id,
-            templateUrl: "./estoria.component.html",
-            selector: "estoria"
+            templateUrl: './estoria.component.html',
+            selector: 'estoria'
         }), 
         __metadata('design:paramtypes', [estoria_service_1.EstoriaSevice])
     ], EstoriaComponent);

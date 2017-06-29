@@ -26,8 +26,8 @@ var TarefaFormComponent = (function () {
     TarefaFormComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            templateUrl: "./tarefa.form.component.html",
-            selector: "tarefaForm"
+            templateUrl: './tarefa.form.component.html',
+            selector: 'tarefaForm'
         }), 
         __metadata('design:paramtypes', [])
     ], TarefaFormComponent);

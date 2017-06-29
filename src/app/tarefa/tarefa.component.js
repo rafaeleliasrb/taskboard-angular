@@ -20,8 +20,8 @@ var TarefaComponent = (function () {
     TarefaComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            templateUrl: "./tarefa.component.html",
-            selector: "tarefa"
+            templateUrl: './tarefa.component.html',
+            selector: 'tarefa'
         }), 
         __metadata('design:paramtypes', [])
     ], TarefaComponent);

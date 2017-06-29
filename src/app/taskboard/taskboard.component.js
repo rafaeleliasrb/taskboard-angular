@@ -19,8 +19,10 @@ var TaskboardComponent = (function () {
     }
     TaskboardComponent.prototype.ngOnInit = function () {
         this._inicializaTaskboard();
-        //como chamar esse metodo so depois do de cima, ja q é assincrono
-        //this._getTitulo();
+        /*
+        TODO: como chamar esse metodo so depois do de cima, ja q é assincrono
+        this._getTitulo();
+        */
     };
     TaskboardComponent.prototype.onFinalizaEstoria = function (estoria) {
         var _this = this;
@@ -55,10 +57,10 @@ var TaskboardComponent = (function () {
     TaskboardComponent.prototype._getTitulo = function () {
         var totalDeEstorias = this.estorias.length;
         if (totalDeEstorias === 0) {
-            this.titulo = "Backlog vazio";
+            this.titulo = 'Backlog vazio';
         }
         else if (totalDeEstorias === 1) {
-            this.titulo = "1 estória";
+            this.titulo = '1 estória';
         }
         else {
             this.titulo = totalDeEstorias + " est\u00F3rias";
@@ -67,8 +69,8 @@ var TaskboardComponent = (function () {
     TaskboardComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            templateUrl: "taskboard.component.html",
-            selector: "taskboard"
+            templateUrl: 'taskboard.component.html',
+            selector: 'taskboard'
         }), 
         __metadata('design:paramtypes', [http_1.Http, estoria_service_1.EstoriaSevice])
     ], TaskboardComponent);

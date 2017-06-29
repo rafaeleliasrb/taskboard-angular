@@ -8,8 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var estoria_model_1 = require("../estoria/estoria.model");
+var core_1 = require('@angular/core');
+var estoria_model_1 = require('../estoria/estoria.model');
 var EstoriaForm = (function () {
     function EstoriaForm() {
         this.adicionaEstoria = new core_1.EventEmitter();
@@ -26,8 +26,8 @@ var EstoriaForm = (function () {
     EstoriaForm = __decorate([
         core_1.Component({
             moduleId: module.id,
-            templateUrl: "./estoria.form.html",
-            selector: "estoriaForm"
+            templateUrl: './estoria.form.html',
+            selector: 'estoriaForm'
         }), 
         __metadata('design:paramtypes', [])
     ], EstoriaForm);
